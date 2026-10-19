@@ -176,7 +176,7 @@ export function createAvatar(parent, base = { x: 0, z: 0 }, yaw = 0, variant = '
   head.position.y = 0.07;
   neck.add(head);
   head.add(ell(...V.head, mats.skin, 0.105));
-  const hairCap = new Mesh(new SphereGeometry(1, 28, 14, 0, PI * 2, 0, PI * 0.58), mats.hair);
+  const hairCap = new Mesh(new SphereGeometry(1, 28, 14, 0, PI * 2, 0, PI * 0.45), mats.hair);
   hairCap.scale.set(V.head[0] * 1.06, V.head[1] * 1.08, V.head[2] * 1.1);
   hairCap.position.set(0, 0.112, -0.006);
   hairCap.rotation.x = -0.2;
@@ -190,6 +190,22 @@ export function createAvatar(parent, base = { x: 0, z: 0 }, yaw = 0, variant = '
     const knot = ell(0.03, 0.03, 0.03, mats.hair, 0);
     knot.position.set(0, 0.138, -0.09);
     head.add(knot);
+  }
+  // ojos, cejas y orejas: dan expresión y dejan de parecer un maniquí con visera
+  const eyeMat = new MeshStandardMaterial({ color: 0x15110f, roughness: 0.35 });
+  for (const sx of [-1, 1]) {
+    const eye = ell(0.0105, 0.0125, 0.008, eyeMat, 0.108);
+    eye.position.set(sx * 0.032, 0.108, V.head[2] * 0.915);
+    eye.castShadow = false;
+    head.add(eye);
+    const brow = ell(0.019, 0.0045, 0.007, mats.hair, 0.13);
+    brow.position.set(sx * 0.033, 0.13, V.head[2] * 0.9);
+    brow.rotation.z = sx * -0.12;
+    brow.castShadow = false;
+    head.add(brow);
+    const ear = ell(0.011, 0.02, 0.014, mats.skin, 0.1);
+    ear.position.set(sx * (V.head[0] - 0.002), 0.1, 0);
+    head.add(ear);
   }
   const nose = ell(0.014, 0.016, 0.018, mats.skin, 0.098);
   nose.position.z = V.head[2] + 0.006;

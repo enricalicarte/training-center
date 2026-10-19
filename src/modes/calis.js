@@ -22,7 +22,7 @@ registerMode('chairDip', (t, ctx, lv) => {
   const low = repLow(u, (lv.pause || 0) / per);
   const p = makePose((n) => {
     n.py = lerp(0.47, 0.2, low);
-    n.hz = 0.07 - 0.01 * low;
+    n.hz = 0.1 - 0.01 * low;
     n.lean = lerp(-4, 4, low);
     n.hd = -4;
     n.pp = lerp(-6, -12, low);
@@ -34,11 +34,11 @@ registerMode('chairDip', (t, ctx, lv) => {
       n.F[1] = [0.1, lerp(0.075, 0.28, lift), 0.5, 0, 0, 1, 0, 0];
     }
     const hy = SEAT + 0.015;
-    n.H[1] = [0.2, hy, -0.1, 0.6, 0.2, -1];
-    n.H[-1] = [-0.2, hy, -0.1, -0.6, 0.2, -1];
+    n.H[1] = [0.2, hy, -0.15, 0.6, 0.2, -1];
+    n.H[-1] = [-0.2, hy, -0.15, -0.6, 0.2, -1];
   });
   applyKeyPose(p);
-  return { ground: 'none', propAt: [0, -0.12], propYaw: 0 };
+  return { ground: 'none', propAt: [0, -0.3], propYaw: 0 };
 });
 
 // Flexión inclinada con las manos en la silla
@@ -86,8 +86,8 @@ registerMode('bulgarian', (t, ctx, lv) => {
   const { u } = cycle(t, per);
   const low = repLow(u, (lv.pause || 0) / per);
   const front = ctx.side > 0 ? 1 : -1;
-  const hipY = lerp(0.665, 0.4, low);
-  A.root.position.set(A.base.x, hipY, A.base.z - 0.02);
+  const hipY = lerp(0.665, 0.42, low);
+  A.root.position.set(A.base.x, hipY, A.base.z + lerp(-0.05, 0.03, low));
   A.spine.rotation.x = rad(lerp(4, 22, low));
   A.head.rotation.x = rad(-8);
   for (const s of [1, -1]) {
@@ -98,7 +98,7 @@ registerMode('bulgarian', (t, ctx, lv) => {
     }
   }
   A.root.updateMatrixWorld(true);
-  legIK(front, V3(A.base.x + front * 0.1, 0.075, A.base.z + lerp(0.2, 0.42, low)), V3(0, 0.3, 1));
+  legIK(front, V3(A.base.x + front * 0.1, 0.075, A.base.z + 0.36), V3(0, 0.3, 1));
   footFlat(front, 0);
   legIK(-front, V3(A.base.x - front * 0.1, SEAT + 0.085, A.base.z - 0.6), V3(0, 0.3, 1));
   A.JT.foot[-front].rotation.x = rad(40);
