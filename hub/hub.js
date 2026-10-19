@@ -290,7 +290,7 @@ function build() {
     io.observe(el);
   });
   // nav translúcida al hacer scroll
-  const nav = $('nav');
+  const nav = $('.mnav');
   addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30), { passive: true });
 }
 
