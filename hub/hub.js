@@ -169,7 +169,7 @@ function frame(now) {
   }
   // lado alterna por ciclo para ejercicios con lados
   const ctx = { side: Math.floor(clock / Math.max(1, Math.min(dur, PER / 2))) % 2 ? 1 : -1, dur: Math.max(dur, PER), ex: ei };
-  const cam = Object.assign({}, ex.cam, { dist: ex.cam.dist * (innerWidth > 1020 ? 1.55 : 1.35), ty: (ex.cam.ty || 0.9) + 0.05 });
+  const cam = Object.assign({}, ex.cam, { dist: ex.cam.dist * (innerWidth > 1020 ? 1.55 : 1.6), ty: (ex.cam.ty || 0.9) + (innerWidth > 1020 ? 0.05 : 0.32) });
   stage.frame({
     dt,
     time: now,
