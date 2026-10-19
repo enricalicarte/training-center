@@ -1,0 +1,172 @@
+[
+ {
+  "id": "boxeo",
+  "title": "Boxeo de sombra",
+  "tagline": "Cardio y coordinación · Sin material",
+  "kind": "Boxeo",
+  "summary": "Golpes, esquivas y juego de pies contra un rival imaginario. Quema calorías y descarga la cabeza.",
+  "material": [
+   "Sin material",
+   "Espacio libre de 2 m"
+  ],
+  "acc": "#e0293f",
+  "hi": "#ff8493",
+  "bgA": "#150407",
+  "bgB": "#4a0d18",
+  "accText": "#ffffff",
+  "exercises": 8,
+  "minutes": 25,
+  "names": [
+   "Guardia y rebote",
+   "Juego de pies",
+   "Directos",
+   "Ganchos",
+   "Uppercuts",
+   "Esquivas",
+   "Combinaciones",
+   "Asalto final"
+  ]
+ },
+ {
+  "id": "calistenia",
+  "title": "Calistenia en casa",
+  "tagline": "Fuerza funcional · Una silla",
+  "kind": "Calistenia",
+  "summary": "Fondos, flexiones, sentadillas a una pierna y core con tu peso corporal y una silla estable.",
+  "material": [
+   "Una silla estable",
+   "Esterilla (opcional)"
+  ],
+  "acc": "#7ddc3c",
+  "hi": "#b7f088",
+  "bgA": "#07110a",
+  "bgB": "#1c4511",
+  "accText": "#0c1e03",
+  "exercises": 7,
+  "minutes": 31,
+  "names": [
+   "Fondos en silla",
+   "Flexiones inclinadas",
+   "Flexión en pica",
+   "Sentadilla búlgara",
+   "Subidas a la silla",
+   "Plancha dinámica",
+   "Elevación de piernas"
+  ]
+ },
+ {
+  "id": "fuerza",
+  "title": "Fuerza en casa",
+  "tagline": "Cuerpo completo · Sin material",
+  "kind": "Fuerza",
+  "summary": "Piernas, glúteos, pecho, core y espalda con tu propio peso. Progresión en tres niveles.",
+  "material": [
+   "Sin material",
+   "Esterilla (opcional)"
+  ],
+  "acc": "#1fd1b8",
+  "hi": "#8ff0e0",
+  "bgA": "#03100f",
+  "bgB": "#0b3d38",
+  "accText": "#04211d",
+  "exercises": 8,
+  "minutes": 31,
+  "names": [
+   "Sentadilla",
+   "Zancadas",
+   "Puente de glúteos",
+   "Flexiones",
+   "Plancha",
+   "Abdominales",
+   "Superman",
+   "Saltos y cardio"
+  ]
+ },
+ {
+  "id": "hiit",
+  "title": "HIIT sin material",
+  "tagline": "Cardio intenso · Intervalos",
+  "kind": "HIIT",
+  "summary": "Intervalos de alta intensidad: trabaja fuerte, descansa justo y repite. Quema mucho en poco tiempo.",
+  "material": [
+   "Sin material",
+   "Calzado deportivo"
+  ],
+  "acc": "#3b82ff",
+  "hi": "#8ab8ff",
+  "bgA": "#050a18",
+  "bgB": "#0f2a6b",
+  "accText": "#ffffff",
+  "exercises": 8,
+  "minutes": 24,
+  "names": [
+   "Jumping jacks",
+   "Rodillas altas",
+   "Sentadilla con salto",
+   "Mountain climbers",
+   "Patinador",
+   "Burpees",
+   "Talones al glúteo",
+   "Comba imaginaria"
+  ]
+ },
+ {
+  "id": "movilidad",
+  "title": "Movilidad y estiramientos",
+  "tagline": "Calentar y soltar · Sin material",
+  "kind": "Movilidad",
+  "summary": "Calentamiento dinámico para activar articulaciones y estiramientos para cerrar el entrenamiento. Ideal a diario.",
+  "material": [
+   "Sin material",
+   "Esterilla (opcional)"
+  ],
+  "acc": "#f5b73b",
+  "hi": "#ffd983",
+  "bgA": "#140e03",
+  "bgB": "#4a3208",
+  "accText": "#2a1c02",
+  "exercises": 11,
+  "minutes": 14,
+  "names": [
+   "Círculos de brazos",
+   "Rotación de tronco",
+   "Círculos de cadera",
+   "Balanceo de piernas",
+   "Estocada con rotación",
+   "Sentadilla profunda",
+   "Cuádriceps de pie",
+   "Flexión adelante",
+   "Apertura de pecho",
+   "Figura 4 tumbado",
+   "Flexor de cadera"
+  ]
+ },
+ {
+  "id": "yoga",
+  "title": "Yoga flow",
+  "tagline": "Equilibrio y calma · Esterilla",
+  "kind": "Yoga",
+  "summary": "Posturas clásicas guiadas con respiración. Para soltar tensión, ganar equilibrio y cerrar bien el día.",
+  "material": [
+   "Esterilla",
+   "Ropa cómoda"
+  ],
+  "acc": "#9b7bff",
+  "hi": "#cbbcff",
+  "bgA": "#0a0716",
+  "bgB": "#2a1a5e",
+  "accText": "#140a33",
+  "exercises": 8,
+  "minutes": 9,
+  "names": [
+   "Montaña y respiración",
+   "Postura del árbol",
+   "Guerrero I y II",
+   "Perro, plancha y cobra",
+   "Gato y vaca",
+   "Pájaro-perro",
+   "Pinza sentado y torsión",
+   "Postura del niño y relajación"
+  ]
+ }
+]
