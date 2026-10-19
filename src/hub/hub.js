@@ -214,7 +214,7 @@ function build() {
   $('#cards').innerHTML = DEFS.map((d, i) => {
     const n = count(d.id);
     return `<a class="card c${i}" href="${d.id}.html" style="--a:${d.theme.acc};--h:${d.theme.hi};--o:${d.theme.accText || '#fff'}" data-reveal>
-      <img src="img/${d.id}.jpg" alt="" loading="lazy">
+      <img src="img/${d.id}.jpg" alt="Avatar 3D en ${esc(d.title)}" loading="lazy" width="960" height="600">
       <div class="shade"></div>
       <div class="top"><span class="k">${esc(d.kind)}</span>${n ? `<span class="done">✓ ${n}</span>` : ''}</div>
       <div class="bot">

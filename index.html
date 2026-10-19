@@ -4,8 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#05070a">
-<meta name="description" content="Forja Training Center: tu training center en casa o donde sea, con coach 3D en vivo. Fuerza, boxeo, yoga, movilidad, calistenia y HIIT con coach en vivo, voz y cuenta atrás. Sin cuentas, sin instalar nada.">
-<title>Forja Training Center · En casa o donde sea</title>
+<meta name="description" content="Entrena en casa o donde sea con un coach 3D: fuerza, boxeo, yoga, movilidad, calistenia y HIIT. Rutinas guiadas con voz y cuenta atrás, 3 niveles, gratis y sin registro.">
+<title>Forja Training Center · Entrena en casa con coach 3D</title>
+<link rel="canonical" href="https://enricalicarte.github.io/training-center/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:site_name" content="Forja Training Center">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Forja Training Center · Entrena en casa con coach 3D">
+<meta property="og:description" content="Entrena en casa o donde sea con un coach 3D: fuerza, boxeo, yoga, movilidad, calistenia y HIIT. Rutinas guiadas con voz y cuenta atrás, 3 niveles, gratis y sin registro.">
+<meta property="og:url" content="https://enricalicarte.github.io/training-center/">
+<meta property="og:image" content="https://enricalicarte.github.io/training-center/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Forja Training Center · Entrena en casa con coach 3D">
+<meta name="twitter:description" content="Entrena en casa o donde sea con un coach 3D: fuerza, boxeo, yoga, movilidad, calistenia y HIIT. Rutinas guiadas con voz y cuenta atrás, 3 niveles, gratis y sin registro.">
+<meta name="twitter:image" content="https://enricalicarte.github.io/training-center/img/og.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Forja Training Center","url":"https://enricalicarte.github.io/training-center/","inLanguage":"es","description":"Entrena en casa o donde sea con un coach 3D: fuerza, boxeo, yoga, movilidad, calistenia y HIIT. Rutinas guiadas con voz y cuenta atrás, 3 niveles, gratis y sin registro."},{"@type":"Organization","name":"Forja Training Center","url":"https://enricalicarte.github.io/training-center/","logo":"https://enricalicarte.github.io/training-center/favicon.svg"},{"@type":"ItemList","name":"Sesiones de entrenamiento","itemListElement":[{"@type":"ListItem","position":1,"name":"Boxeo de sombra en casa: entrenamiento guiado","url":"https://enricalicarte.github.io/training-center/boxeo.html"},{"@type":"ListItem","position":2,"name":"Calistenia en casa con una silla: rutina completa","url":"https://enricalicarte.github.io/training-center/calistenia.html"},{"@type":"ListItem","position":3,"name":"Rutina de fuerza en casa sin material","url":"https://enricalicarte.github.io/training-center/fuerza.html"},{"@type":"ListItem","position":4,"name":"HIIT en casa sin material: rutina de cardio","url":"https://enricalicarte.github.io/training-center/hiit.html"},{"@type":"ListItem","position":5,"name":"Ejercicios de movilidad y estiramientos en casa","url":"https://enricalicarte.github.io/training-center/movilidad.html"},{"@type":"ListItem","position":6,"name":"Yoga en casa para principiantes: flow guiado","url":"https://enricalicarte.github.io/training-center/yoga.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Necesito material para entrenar con Forja?","acceptedAnswer":{"@type":"Answer","text":"No. La mayoría de sesiones se hacen sin material; la calistenia usa solo una silla estable y el yoga y la movilidad van mejor con una esterilla."}},{"@type":"Question","name":"¿Es gratis? ¿Hay que registrarse?","acceptedAnswer":{"@type":"Answer","text":"Es gratis y no necesitas cuenta. Tu progreso se guarda solo en tu dispositivo."}},{"@type":"Question","name":"¿Sirve para principiantes?","acceptedAnswer":{"@type":"Answer","text":"Sí. Todos los ejercicios tienen tres niveles (principiante, intermedio y avanzado) que puedes cambiar sobre la marcha."}},{"@type":"Question","name":"¿Cuánto duran las sesiones?","acceptedAnswer":{"@type":"Answer","text":"Entre 9 y 31 minutos según la sesión: yoga unos 9, movilidad 14, HIIT 24, boxeo 25, fuerza y calistenia 31."}},{"@type":"Question","name":"¿Funciona en el móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí. Funciona en el navegador del móvil, tablet, ordenador o televisión, en pantalla completa y sin instalar nada."}}]}]}</script>
 <link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css">
 <style>
@@ -178,8 +194,15 @@ section{padding:110px 0}
 .final h2{font:800 clamp(48px,8vw,120px)/.88 BC,sans-serif;text-transform:uppercase;margin-bottom:26px}
 .final h2 span{color:var(--acc);transition:color .6s}
 .final .cta{justify-content:center}
+details{border:1px solid var(--line);border-radius:18px;padding:20px 24px;background:rgba(255,255,255,.025);margin-bottom:10px}
+details[open]{border-color:rgba(255,255,255,.25)}
+summary{cursor:pointer;font:800 24px/1.1 BC,sans-serif;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--acc);font-size:30px;line-height:.8}
+details[open] summary::after{content:"–"}
+details p{color:#aebbc8;margin-top:12px;max-width:760px}
+.fl ul{list-style:none;margin-top:8px}.fl li{margin:6px 0}.fl a{color:var(--mut)}.fl a:hover{color:var(--ink)}
 footer{padding:50px 0 60px;color:#66768a;font-size:13px;line-height:1.7}
-footer .wrap{display:grid;grid-template-columns:1fr 2fr;gap:30px}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr 2fr;gap:30px}
 footer b{color:var(--mut)}
 
 /* RESPONSIVE */
@@ -243,7 +266,7 @@ footer b{color:var(--mut)}
   <div class="wrap">
     <div>
       <div class="eyebrow">Tu training center · en casa o donde sea</div>
-      <h1><span>Entrena</span><span class="o">como los</span><span class="a">pros</span></h1>
+      <h1><span>Entrena</span><span class="o">como los</span><span class="a">pros</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> · Entrenamientos en casa con coach 3D</span></h1>
       <p class="lead">Un coach 3D te enseña cada ejercicio en tiempo real: técnica, músculos, ritmo y cuenta atrás con voz. Sin cuentas, sin instalar nada: en el salón, en el hotel o en el parque, abre y empieza.</p>
       <div class="cta">
         <a class="pill" id="hoy" href="#sesiones">Empezar</a>
@@ -302,6 +325,11 @@ footer b{color:var(--mut)}
   </div>
 </div></section>
 
+<section id="faq" style="padding-top:30px"><div class="wrap">
+  <div class="sh" data-reveal><div class="eyebrow">Preguntas frecuentes</div><h2>Antes de empezar</h2></div>
+  <div class="faq"><details data-reveal><summary>¿Necesito material para entrenar con Forja?</summary><p>No. La mayoría de sesiones se hacen sin material; la calistenia usa solo una silla estable y el yoga y la movilidad van mejor con una esterilla.</p></details><details data-reveal><summary>¿Es gratis? ¿Hay que registrarse?</summary><p>Es gratis y no necesitas cuenta. Tu progreso se guarda solo en tu dispositivo.</p></details><details data-reveal><summary>¿Sirve para principiantes?</summary><p>Sí. Todos los ejercicios tienen tres niveles (principiante, intermedio y avanzado) que puedes cambiar sobre la marcha.</p></details><details data-reveal><summary>¿Cuánto duran las sesiones?</summary><p>Entre 9 y 31 minutos según la sesión: yoga unos 9, movilidad 14, HIIT 24, boxeo 25, fuerza y calistenia 31.</p></details><details data-reveal><summary>¿Funciona en el móvil?</summary><p>Sí. Funciona en el navegador del móvil, tablet, ordenador o televisión, en pantalla completa y sin instalar nada.</p></details></div>
+</div></section>
+
 <section style="padding-top:10px"><div class="wrap">
   <div class="final" data-reveal>
     <div class="eyebrow" style="justify-content:center">En casa o donde sea</div>
@@ -312,6 +340,7 @@ footer b{color:var(--mut)}
 
 <footer><div class="wrap">
   <div class="logo" style="color:var(--ink)"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span><span>Forja<small>TU TRAINING CENTER</small></span></div>
+  <nav aria-label="Sesiones" class="fl"><b>Sesiones</b><ul><li><a href="boxeo.html">Boxeo de sombra en casa: entrenamiento guiado</a></li><li><a href="calistenia.html">Calistenia en casa con una silla: rutina completa</a></li><li><a href="fuerza.html">Rutina de fuerza en casa sin material</a></li><li><a href="hiit.html">HIIT en casa sin material: rutina de cardio</a></li><li><a href="movilidad.html">Ejercicios de movilidad y estiramientos en casa</a></li><li><a href="yoga.html">Yoga en casa para principiantes: flow guiado</a></li></ul></nav>
   <p><b>Importante.</b> Forja ofrece pautas generales de ejercicio para personas sanas y no sustituye el consejo de un profesional sanitario o de un entrenador. Si tienes una lesión, estás embarazada o tienes una condición médica, consúltalo antes de empezar y para si notas dolor, mareo o falta de aire. Tu progreso se guarda solo en este dispositivo.</p>
 </div></footer>
 <script src="js/hub.js" defer></script>

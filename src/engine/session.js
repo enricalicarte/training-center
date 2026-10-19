@@ -66,7 +66,6 @@ export function bootSession(def) {
   if (!Array.isArray(CFG.lv) || CFG.lv.length !== EXS.length) CFG.lv = EXS.map(() => CFG.level || 1);
 
   // ---------- marcado ----------
-  document.title = def.title + ' · Forja';
   document.documentElement.style.setProperty('--acc', def.theme.acc);
   document.documentElement.style.setProperty('--hi', def.theme.hi);
   document.documentElement.style.setProperty('--acc-t', def.theme.accText || '#fff');
