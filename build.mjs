@@ -16,6 +16,8 @@ mkdirSync(join(dist, 'css'), { recursive: true });
 cpSync('assets/fonts', join(dist, 'fonts'), { recursive: true });
 if (existsSync('assets/img')) cpSync('assets/img', join(dist, 'img'), { recursive: true });
 cpSync('src/styles', join(dist, 'css'), { recursive: true });
+// Modelo de detección de postura (MediaPipe Pose, ligero) para el coach de cámara
+if (existsSync('assets/mp')) cpSync('assets/mp', join(dist, 'mp'), { recursive: true });
 
 const SITE = (process.env.SITE_URL || 'https://enricalicarte.github.io/training-center/').replace(/\/?$/, '/');
 const TODAY = new Date().toISOString().slice(0, 10);

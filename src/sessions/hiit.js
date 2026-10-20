@@ -35,6 +35,7 @@ export default {
   exercises: [
     {
       name: 'Jumping jacks',
+      coach: 'jacks',
       area: 'Cardio total',
       mus: ['delt', 'calf', 'abd', 'quad'],
       mode: 'jacks',

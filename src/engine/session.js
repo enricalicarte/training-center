@@ -2,6 +2,7 @@ import { Stage } from './stage.js';
 import { MUSCLE_NAMES } from './rig.js';
 import { clamp } from './math.js';
 import { stepAvatar } from './pose.js';
+import { createCoach } from './coach.js';
 import { beep, chime, keepAwake, requestFullscreen, speak, stopSpeech, toggleFullscreen } from './audio.js';
 
 /**
@@ -84,6 +85,7 @@ export function bootSession(def) {
     <button class="pill" id="bW">Vista</button>
     <button class="pill on" id="bV">Voz</button>
     <button class="pill on" id="bS">Sonido</button>
+    <button class="pill" id="bCam">Cámara</button>
     <button class="pill" id="bC">Ajustes</button>
     <button class="pill" id="bF"><span class="lg">Pantalla completa</span><span class="sm">⛶</span></button>
   </div>
@@ -328,6 +330,13 @@ export function bootSession(def) {
     e.classList.add('go');
   }
 
+  // ---------- coach de cámara ----------
+  const coach = createCoach({
+    stageEl: $('#stage'),
+    say: (t) => speak(CFG, t),
+    getExercise: () => EXS[D.ex],
+  });
+
   // ---------- flujo ----------
   function loadExercise() {
     const ex = EXS[D.ex];
@@ -339,6 +348,7 @@ export function bootSession(def) {
     speak(CFG, `${D.ex + 1}. ${ex.name}. ${LEVEL_NAMES[lvl(D.ex) - 1]}`);
     renderPanel();
     renderTimer();
+    if (coach) coach.setExercise(ex);
   }
 
   function startSession() {
@@ -521,6 +531,10 @@ export function bootSession(def) {
     save();
   };
   $('#bF').onclick = toggleFullscreen;
+  $('#bCam').onclick = () => {
+    coach.toggle();
+    $('#bCam').classList.toggle('on', coach.isOpen());
+  };
   $('#bW').onclick = () => {
     D.view = (D.view + 1) % VIEWS.length;
     D.dragAz = 0;

@@ -27,6 +27,7 @@ export default {
   exercises: [
     {
       name: 'Sentadilla',
+      coach: 'squat',
       area: 'Piernas y glúteos',
       mus: ['quad', 'glute', 'ham', 'core'],
       mode: 'squat',
@@ -58,6 +59,7 @@ export default {
     },
     {
       name: 'Zancadas',
+      coach: 'lunge',
       area: 'Piernas y equilibrio',
       mus: ['quad', 'glute', 'ham', 'abd'],
       mode: 'lunge',
@@ -88,6 +90,7 @@ export default {
     },
     {
       name: 'Puente de glúteos',
+      coach: 'bridge',
       area: 'Glúteos y cadena posterior',
       mus: ['glute', 'ham', 'core', 'lumbar'],
       mode: 'bridge',
@@ -118,6 +121,7 @@ export default {
     },
     {
       name: 'Flexiones',
+      coach: 'pushup',
       area: 'Pecho, hombros y tríceps',
       mus: ['chest', 'delt', 'tri', 'core'],
       mode: 'pushup',
@@ -148,6 +152,7 @@ export default {
     },
     {
       name: 'Plancha',
+      coach: 'plank',
       area: 'Core y estabilidad',
       mus: ['core', 'obl', 'delt', 'glute'],
       mode: 'plank',
