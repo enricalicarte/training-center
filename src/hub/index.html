@@ -179,6 +179,10 @@ section{padding:110px 0}
 .final h2{font:800 clamp(48px,8vw,120px)/.88 BC,sans-serif;text-transform:uppercase;margin-bottom:26px}
 .final h2 span{color:var(--acc);transition:color .6s}
 .final .cta{justify-content:center}
+#guia h3{font:800 22px/1 BC,sans-serif;text-transform:uppercase;margin:22px 0 10px;color:var(--mut)}
+.guide ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.guide li a{display:block;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:15px;transition:.25s}
+.guide li a:hover{border-color:var(--ink);background:rgba(255,255,255,.1)}
 details{border:1px solid var(--line);border-radius:18px;padding:20px 24px;background:rgba(255,255,255,.025);margin-bottom:10px}
 details[open]{border-color:rgba(255,255,255,.25)}
 summary{cursor:pointer;font:800 24px/1.1 BC,sans-serif;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:16px}
@@ -233,7 +237,7 @@ footer b{color:var(--mut)}
 <body>
 <nav class="mnav"><div class="wrap">
   <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span><span>Forja<small>TU TRAINING CENTER</small></span></a>
-  <div class="nl"><a href="#sesiones">Sesiones</a><a href="#como">Cómo funciona</a><a href="#niveles">Niveles</a><a href="#semana">Tu semana</a></div>
+  <div class="nl"><a href="#sesiones">Sesiones</a><a href="#como">Cómo funciona</a><a href="#niveles">Niveles</a><a href="#semana">Tu semana</a><a href="ejercicios/">Guía de ejercicios</a></div>
   <a class="pill" href="#sesiones">Elegir sesión</a>
 </div></nav>
 
@@ -308,6 +312,12 @@ footer b{color:var(--mut)}
   <div class="numbers">
     <div><b id="nSes">6</b>Sesiones</div><div><b id="nEx">0</b>Ejercicios</div><div><b id="nDone">0</b>Completadas</div><div><b id="nMin">0</b>Minutos entrenados</div>
   </div>
+</div></section>
+
+<section id="guia" style="padding-top:30px"><div class="wrap">
+  <div class="sh" data-reveal><div class="eyebrow">Guía de ejercicios</div><h2>Aprende la técnica de cada ejercicio</h2><p>Técnica paso a paso, músculos que trabaja, errores comunes y progresión en 3 niveles para cada uno de los ejercicios.</p></div>
+  <div class="guide" data-reveal><!--__GUIDE__--></div>
+  <p style="margin-top:26px"><a class="pill ghost" href="ejercicios/">Ver toda la guía</a></p>
 </div></section>
 
 <section id="faq" style="padding-top:30px"><div class="wrap">

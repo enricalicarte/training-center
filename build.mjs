@@ -292,6 +292,11 @@ h2{font:800 clamp(28px,4vw,38px)/1 BC,sans-serif;text-transform:uppercase;margin
 footer{max-width:860px;margin:0 auto;padding:30px 20px 60px;color:#66768a;font-size:13px;border-top:1px solid rgba(255,255,255,.08)}footer b{color:#8a98a8}
 @media(max-width:700px){.lvs,.more{grid-template-columns:1fr}}
 `);
+{
+  const f = join(dist, 'index.html');
+  const g = defs.map((d) => `<h3>${esc(d.title)}</h3><ul>${guides.filter((x) => x.d === d).map((x) => `<li><a href="ejercicios/${x.sl}.html">${esc(x.e.name)}</a></li>`).join('')}</ul>`).join('');
+  writeFileSync(f, readFileSync(f, 'utf8').replace('<!--__GUIDE__-->', g));
+}
 // enlaza cada ejercicio de las páginas de sesión con su guía
 for (const d of defs) {
   const f = join(dist, d.id + '.html');
