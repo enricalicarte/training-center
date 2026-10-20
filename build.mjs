@@ -24,6 +24,7 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Título y descripción optimizados por sesión (palabras que la gente busca)
 const FAQ = [
+  ['¿Puede la cámara decirme si hago bien los ejercicios?', 'Sí, en sentadilla, zancadas, flexiones, plancha, puente de glúteos y jumping jacks. Activa el Coach de cámara y cuenta tus repeticiones y avisa de errores de técnica. El vídeo se procesa en tu dispositivo y no se envía ni se guarda. Es una guía, no un diagnóstico.'],
   ['¿Necesito material para entrenar con Forja?', 'No. La mayoría de sesiones se hacen sin material; la calistenia usa solo una silla estable y el yoga y la movilidad van mejor con una esterilla.'],
   ['¿Es gratis? ¿Hay que registrarse?', 'Es gratis y no necesitas cuenta. Tu progreso se guarda solo en tu dispositivo.'],
   ['¿Sirve para principiantes?', 'Sí. Todos los ejercicios tienen tres niveles (principiante, intermedio y avanzado) que puedes cambiar sobre la marcha.'],
