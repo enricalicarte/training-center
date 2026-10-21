@@ -53,6 +53,9 @@ export function createCoach({ stageEl, say, getExercise }) {
   let lastSent = 0;
   let lastSay = 0;
   let noBody = 0;
+  let wrongView = 0;
+  let complexity = 1; // 1 = modelo completo; baja a 0 (ligero) si el dispositivo no llega
+  let infer = { n: 0, ms: 0, t0: 0 };
   let mode = 'closed'; // closed | ask | loading | run | error
 
   const setMode = (m) => {
@@ -123,11 +126,33 @@ export function createCoach({ stageEl, say, getExercise }) {
       return;
     }
     noBody = 0;
-    const L = raw.map((p) => ({ x: p.x * w, y: p.y * h, visibility: p.visibility ?? 1 }));
-    const r = session.push(L, performance.now());
-    draw(L);
+    const L = raw.map((p) => ({ x: p.x * w, y: p.y * h, z: (p.z || 0) * w, visibility: p.visibility ?? 1 }));
+    const now = performance.now();
+    if (infer.t0) {
+      infer.ms += now - infer.t0;
+      infer.n++;
+      // tras ~40 inferencias, si el modelo completo va a menos de ~9 fps, pasa al ligero
+      if (complexity === 1 && infer.n === 40 && infer.ms / infer.n > 110) {
+        complexity = 0;
+        pose.setOptions({ modelComplexity: 0 });
+      }
+    }
+    const r = session.push(L, now);
+    draw(session.sm.p || L);
     if (!r.ok) {
       msg(ANALYZERS[session.kind].hint, 'warn');
+      return;
+    }
+    const def = ANALYZERS[session.kind];
+    if (def.wants && r.view && r.view !== def.wants && r.view !== 'oblique') {
+      if (++wrongView > 20) {
+        msg(def.wants === 'side' ? 'Gírate: colócate de lado respecto a la cámara.' : 'Gírate: colócate de frente a la cámara.', 'warn');
+        return;
+      }
+    } else wrongView = 0;
+    if (!r.calibrated) {
+      msg('Calibrando… quédate quieto un segundo en la posición inicial.', '');
+      stats();
       return;
     }
     for (const e of r.ev) {
@@ -157,6 +182,7 @@ export function createCoach({ stageEl, say, getExercise }) {
       if (!busy && video.readyState >= 2 && now - lastSent > 55) {
         busy = true;
         lastSent = now;
+        infer.t0 = now;
         pose.send({ image: video }).catch(() => {
           busy = false;
         });
@@ -169,12 +195,12 @@ export function createCoach({ stageEl, say, getExercise }) {
 
   async function start() {
     setMode('loading');
-    msg('Cargando el modelo de detección (unos 12 MB, solo la primera vez)…');
+    msg('Cargando el modelo de detección (unos 15 MB, solo la primera vez)…');
     try {
       await loadLib();
       if (!pose) {
         pose = new window.Pose({ locateFile: (f) => BASE + f });
-        pose.setOptions({ modelComplexity: 0, smoothLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
+        pose.setOptions({ modelComplexity: complexity, smoothLandmarks: false, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
         pose.onResults(onResults);
       }
       stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }, audio: false });

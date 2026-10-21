@@ -81,4 +81,31 @@ ok('jumping jacks: 8 reps buenas', r.cs.reps.count === 8 && r.reps.every((e) => 
   ok('plancha con cadera caída avisa', tips.some((e) => e.key === 'sag')); }
 // poca visibilidad
 { const cs = new CoachSession('squat'); const L = squatFrame(0).map((p) => ({ ...p, visibility: 0.1 })); ok('sin visibilidad: ok=false', cs.push(L, 0).ok === false); }
-console.log(fail ? `\n${fail} fallos` : '\ntodo bien'); process.exit(fail ? 1 : 0);
+
+// ---- mejoras: One Euro, voto temporal, calibración, orientación ----
+import { Smoother, viewOf } from "../src/engine/coach-logic.js";
+{ // One Euro: quita temblor en reposo y sigue el movimiento rápido sin retardo grande
+  const sm = new Smoother(); let t = 0; let sq = 0, n = 0;
+  for (let i = 0; i < 150; i++, t += 33) { const P = sm.push(jitter(squatFrame(0), 0.01), t); if (i > 10) { sq += (P[LM.knL].x - 0.5) ** 2; n++; } }
+  const rms = Math.sqrt(sq / n);
+  ok('One Euro: temblor en reposo reducido a menos de la mitad (RMS ruido 0.0029)', rms < 0.00145, `(${rms.toFixed(4)})`);
+  let lag = 0;
+  for (let i = 0; i <= 30; i++, t += 33) { const k = i / 30; const P = sm.push(squatFrame(k), t); const raw = squatFrame(k)[LM.hipL]; lag = Math.max(lag, Math.hypot(P[LM.hipL].x - raw.x, P[LM.hipL].y - raw.y)); }
+  ok('One Euro: retardo en movimiento rápido < 0.02', lag < 0.02, `(${lag.toFixed(4)})`);
+}
+{ // voto temporal: un solo frame inclinado no dispara "chest"
+  const cs = new CoachSession('squat'); const tips = []; let t = 0;
+  for (let i = 0; i <= 60; i++, t += 33) { const k = 0.5 - 0.5 * Math.cos(2 * Math.PI * i / 60); tips.push(...cs.push(squatFrame(k, i === 30 ? 70 : 15), t).ev.filter((e) => e.type === 'tip')); }
+  ok('voto temporal: un frame inclinado no avisa', tips.length === 0, `(${tips.length})`);
+}
+{ // calibración: persona que no estira la rodilla del todo (reposo ~166°) → sigue contando reps
+  const cs = new CoachSession('squat'); let t = 0; let reps = 0;
+  const fr = (k) => squatFrame(0.05 + k * 0.95);
+  for (let i = 0; i < 45; i++, t += 33) cs.push(jitter(fr(0), 0.002), t);
+  ok('calibración hecha tras ~1,5 s quieto', cs.an.calib.done, `rest=${cs.an.calib.rest && cs.an.calib.rest.toFixed(1)} hi=${cs.an.calib.hi.toFixed(0)} lo=${cs.an.calib.lo.toFixed(0)}`);
+  for (let r = 0; r < 4; r++) for (let f = 0; f <= 60; f++, t += 33) { const k = 0.5 - 0.5 * Math.cos(2 * Math.PI * f / 60); reps += cs.push(jitter(fr(k), 0.002), t).ev.filter((e) => e.type === 'rep').length; }
+  ok('con calibración: 4 reps', reps === 4, `(${reps})`);
+}
+ok('orientación: de lado', viewOf(squatFrame(0)) === 'side', viewOf(squatFrame(0)));
+ok('orientación: de frente', viewOf(jackFrame(0)) === 'front', viewOf(jackFrame(0)));
+console.log(fail ? `${fail} fallos` : 'todo bien'); process.exit(fail ? 1 : 0);
