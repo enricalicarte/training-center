@@ -183,6 +183,7 @@ export default {
     },
     {
       name: 'Abdominales',
+      coach: 'crunch',
       area: 'Abdomen',
       mus: ['core', 'obl'],
       mode: 'crunch',
@@ -213,6 +214,7 @@ export default {
     },
     {
       name: 'Superman',
+      coach: 'superman',
       area: 'Espalda y lumbares',
       mus: ['lumbar', 'back', 'glute', 'delt'],
       mode: 'superman',
@@ -243,6 +245,7 @@ export default {
     },
     {
       name: 'Saltos y cardio',
+      coach: 'jump',
       area: 'Cardio y potencia',
       mus: ['calf', 'quad', 'glute', 'core'],
       mode: 'jump',

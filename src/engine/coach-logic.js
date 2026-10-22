@@ -6,8 +6,8 @@ export const LM = {
   knL: 25, knR: 26, anL: 27, anR: 28, heL: 29, heR: 30, ftL: 31, ftR: 32,
 };
 
-const deg = (r) => (r * 180) / Math.PI;
-const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+export const deg = (r) => (r * 180) / Math.PI;
+export const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
 /** Ángulo en b formado por a-b-c, en grados (0..180). */
 export function angle(a, b, c) {
@@ -28,7 +28,7 @@ export function angle3(a, b, c, zw = 0.6) {
 }
 
 /** Inclinación de un segmento respecto a la vertical (0 = vertical, 90 = horizontal). */
-function fromVertical(a, b) {
+export function fromVertical(a, b) {
   return Math.abs(deg(Math.atan2(Math.abs(b.x - a.x), Math.abs(b.y - a.y))));
 }
 
@@ -108,7 +108,7 @@ export class Smoother {
  * Voto temporal: un aviso solo se activa si aparece en la mayoría de los frames de la última ventana
  * (~0,5 s), así un frame malo no dispara "pecho arriba" sin motivo.
  */
-class Vote {
+export class Vote {
   constructor(windowMs = 500, ratio = 0.6) {
     this.w = windowMs;
     this.r = ratio;
@@ -129,7 +129,7 @@ class Vote {
  * Calibración automática: cuando estás quieto en la posición inicial durante ~1 s, mide tu ángulo de
  * reposo y adapta los umbrales de repetición a tu cuerpo (no todo el mundo estira del todo la rodilla).
  */
-class Calib {
+export class Calib {
   constructor(cfg) {
     this.cfg = cfg;
     this.h = [];
@@ -161,7 +161,7 @@ class Calib {
 }
 
 /** Fusión de los dos lados ponderada por visibilidad: si te tapas una rodilla, manda la otra. */
-function fuse(L, a, b) {
+export function fuse(L, a, b) {
   const pa = L[a], pb = L[b];
   const va = pa.visibility ?? 1, vb = pb.visibility ?? 1;
   if (va >= 0.5 && vb >= 0.5) {
@@ -183,7 +183,7 @@ export function viewOf(L) {
  * Contador de repeticiones con histéresis. La señal `s` es "esfuerzo": baja al hacer el esfuerzo
  * (cuando s < lo se considera que has llegado abajo) y vuelve a subir (s > hi) para cerrar la repetición.
  */
-class Reps {
+export class Reps {
   constructor(lo, hi, minMs = 500) {
     this.lo = lo;
     this.hi = hi;
@@ -228,7 +228,7 @@ class Reps {
 // ---------- analizadores ----------
 // Cada uno: { id, name, view, hint, tips: {...}, create() → { push(L, t) → { status?, ev: [], metric? } } }
 
-function sideChain(L) {
+export function sideChain(L) {
   const c = {
     sh: fuse(L, LM.shL, LM.shR), el: fuse(L, LM.elL, LM.elR), wr: fuse(L, LM.wrL, LM.wrR), hip: fuse(L, LM.hipL, LM.hipR),
     kn: fuse(L, LM.knL, LM.knR), an: fuse(L, LM.anL, LM.anR), he: fuse(L, LM.heL, LM.heR), ft: fuse(L, LM.ftL, LM.ftR),
@@ -237,34 +237,39 @@ function sideChain(L) {
   return c;
 }
 
-const BODY_HINT = 'Colócate de lado, a 2-3 m, con el cuerpo entero a la vista.';
+export const BODY_HINT = 'Colócate de lado, a 2-3 m, con el cuerpo entero a la vista.';
 
-function makeSideAnalyzer(cfg) {
+export function makeSideAnalyzer(cfg) {
   return () => {
     const reps = new Reps(cfg.lo, cfg.hi, cfg.minMs || 600);
-    const calib = new Calib(cfg);
+    const calib = cfg.calib === false ? null : new Calib(cfg);
     const vote = new Vote();
+    const chain = cfg.chain || sideChain;
+    const state = {};
     return {
       reps,
       calib,
       push(L, t) {
-        const c = sideChain(L);
-        const out = { ev: [], ok: c.vis >= 0.5, view: viewOf(L), calibrated: calib.done };
+        const c = chain(L);
+        const out = { ev: [], ok: c.vis >= (cfg.minVis ?? 0.5), view: viewOf(L), calibrated: !calib || calib.done };
         if (!out.ok) return out;
-        const m = cfg.measure(c, L);
+        const m = cfg.measure(c, L, t, state);
+        if (m === null) return out;
         out.metric = Math.round(m.signal);
-        calib.push(m.signal, t);
-        out.calibrated = calib.done;
-        reps.lo = calib.lo;
-        reps.hi = calib.hi;
-        const flags = vote.push(cfg.flags(c, m, L), t);
+        if (calib) {
+          calib.push(m.signal, t);
+          out.calibrated = calib.done;
+          reps.lo = calib.lo;
+          reps.hi = calib.hi;
+        }
+        const flags = vote.push(cfg.flags ? cfg.flags(c, m, L) : [], t);
         for (const f of flags) reps.flag(f);
         const done = reps.push(m.signal, t);
         if (reps.phase === 'down') out.phase = 'down';
         for (const f of flags) out.ev.push({ type: 'tip', key: f });
         if (done) {
           const issues = [...done.flags];
-          if (done.min > cfg.good) issues.push('shallow');
+          if (cfg.good !== undefined && done.min > cfg.good) issues.push(cfg.shallowKey || 'shallow');
           const good = issues.length === 0;
           if (good) reps.good++;
           out.ev.push({ type: 'rep', good, issues, n: reps.count });
@@ -461,7 +466,7 @@ export const ANALYZERS = {
 };
 
 /** Desviación vertical de la cadera respecto a la línea hombro-tobillo, relativa a su longitud (+ = cadera caída). */
-function hipDeviation(c) {
+export function hipDeviation(c) {
   const dx = c.an.x - c.sh.x;
   const dy = c.an.y - c.sh.y;
   const len = Math.hypot(dx, dy);

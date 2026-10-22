@@ -31,6 +31,7 @@ export default {
   exercises: [
     {
       name: 'Guardia y rebote',
+      coach: 'guard',
       area: 'Calentamiento',
       mus: ['calf', 'quad', 'delt'],
       mode: 'guard',
@@ -45,6 +46,7 @@ export default {
     },
     {
       name: 'Juego de pies',
+      coach: 'footwork',
       area: 'Desplazamiento',
       mus: ['quad', 'glute', 'calf', 'abd'],
       mode: 'foot',
@@ -59,6 +61,7 @@ export default {
     },
     {
       name: 'Directos',
+      coach: 'punches',
       area: 'Jab y cruzado',
       mus: ['delt', 'tri', 'chest', 'core'],
       mode: 'combo',
@@ -73,6 +76,7 @@ export default {
     },
     {
       name: 'Ganchos',
+      coach: 'punches',
       area: 'Tronco y hombros',
       mus: ['obl', 'core', 'delt', 'glute'],
       mode: 'combo',
@@ -87,6 +91,7 @@ export default {
     },
     {
       name: 'Uppercuts',
+      coach: 'punches',
       area: 'Piernas y core',
       mus: ['quad', 'glute', 'core', 'bic'],
       mode: 'combo',
@@ -101,6 +106,7 @@ export default {
     },
     {
       name: 'Esquivas',
+      coach: 'dodge',
       area: 'Defensa y reflejos',
       mus: ['quad', 'glute', 'core', 'obl'],
       mode: 'dodge',
@@ -115,6 +121,7 @@ export default {
     },
     {
       name: 'Combinaciones',
+      coach: 'punches',
       area: 'Cardio y coordinación',
       mus: ['delt', 'core', 'quad', 'glute'],
       mode: 'combo',
@@ -129,6 +136,7 @@ export default {
     },
     {
       name: 'Asalto final',
+      coach: 'punches',
       area: 'Todo a tope',
       mus: ['delt', 'core', 'quad', 'glute', 'calf'],
       mode: 'combo',

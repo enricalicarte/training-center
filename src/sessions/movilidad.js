@@ -31,6 +31,7 @@ export default {
   exercises: [
     {
       name: 'Círculos de brazos',
+      coach: 'armCircles',
       area: 'Hombros',
       mus: ['delt', 'back'],
       mode: 'armCircles',
@@ -45,6 +46,7 @@ export default {
     },
     {
       name: 'Rotación de tronco',
+      coach: 'torsoRot',
       area: 'Columna dorsal',
       mus: ['obl', 'back'],
       mode: 'torsoRot',
@@ -59,6 +61,7 @@ export default {
     },
     {
       name: 'Círculos de cadera',
+      coach: 'hipCircles',
       area: 'Cadera y lumbar',
       mus: ['abd', 'obl', 'lumbar'],
       mode: 'hipCircles',
@@ -73,6 +76,7 @@ export default {
     },
     {
       name: 'Balanceo de piernas',
+      coach: 'legSwing',
       area: 'Cadera y isquios',
       mus: ['ham', 'quad', 'abd', 'glute'],
       mode: 'legSwing',
@@ -88,6 +92,7 @@ export default {
     },
     {
       name: 'Estocada con rotación',
+      coach: 'wgs',
       area: 'Cadera, torácica e isquios',
       mus: ['quad', 'glute', 'obl', 'back'],
       mode: 'wgs',
@@ -103,6 +108,7 @@ export default {
     },
     {
       name: 'Sentadilla profunda',
+      coach: 'deepSquat',
       area: 'Tobillos, cadera y espalda',
       mus: ['quad', 'glute', 'add', 'calf'],
       mode: 'pose',
@@ -117,6 +123,7 @@ export default {
     },
     {
       name: 'Cuádriceps de pie',
+      coach: 'quadStand',
       area: 'Muslo y cadera',
       mus: ['quad'],
       mode: 'pose',
@@ -132,6 +139,7 @@ export default {
     },
     {
       name: 'Flexión adelante',
+      coach: 'fwdFold',
       area: 'Isquios y espalda',
       mus: ['ham', 'back', 'lumbar'],
       mode: 'pose',
@@ -146,6 +154,7 @@ export default {
     },
     {
       name: 'Apertura de pecho',
+      coach: 'chestOpen',
       area: 'Pecho y hombros',
       mus: ['chest', 'delt'],
       mode: 'pose',
@@ -160,6 +169,7 @@ export default {
     },
     {
       name: 'Figura 4 tumbado',
+      coach: 'figure4',
       area: 'Glúteos y cadera',
       mus: ['glute', 'abd'],
       mode: 'pose',
@@ -175,6 +185,7 @@ export default {
     },
     {
       name: 'Flexor de cadera',
+      coach: 'hipFlexor',
       area: 'Cadera y psoas',
       mus: ['quad', 'glute'],
       mode: 'pose',

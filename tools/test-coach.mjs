@@ -1,5 +1,6 @@
 // Pruebas del coach con esqueletos sintéticos (vista lateral/frontal). node tools/test-coach.mjs
 import { CoachSession, LM } from '../src/engine/coach-logic.js';
+import '../src/engine/coach-analyzers.js';
 const blank = () => Array.from({ length: 33 }, () => ({ x: 0.5, y: 0.5, visibility: 0.99 }));
 // intersección de dos círculos: rodilla/codo a distancias a y b de P y Q, hacia el lado `dir` (+1 delante)
 function joint(P, Q, a, b, dir) {

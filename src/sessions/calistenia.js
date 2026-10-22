@@ -30,6 +30,7 @@ export default {
   exercises: [
     {
       name: 'Fondos en silla',
+      coach: 'chairDip',
       area: 'Tríceps y hombros',
       mus: ['tri', 'delt', 'chest'],
       mode: 'chairDip',
@@ -45,6 +46,7 @@ export default {
     },
     {
       name: 'Flexiones inclinadas',
+      coach: 'pushup',
       area: 'Pecho y tríceps',
       mus: ['chest', 'tri', 'delt', 'core'],
       mode: 'incline',
@@ -60,6 +62,7 @@ export default {
     },
     {
       name: 'Flexión en pica',
+      coach: 'pikePush',
       area: 'Hombros',
       mus: ['delt', 'tri', 'chest', 'core'],
       mode: 'pike',
@@ -74,6 +77,7 @@ export default {
     },
     {
       name: 'Sentadilla búlgara',
+      coach: 'lunge',
       area: 'Piernas y glúteos',
       mus: ['quad', 'glute', 'ham', 'abd'],
       mode: 'bulgarian',
@@ -90,6 +94,7 @@ export default {
     },
     {
       name: 'Subidas a la silla',
+      coach: 'stepUp',
       area: 'Piernas y equilibrio',
       mus: ['quad', 'glute', 'ham'],
       mode: 'stepUp',
@@ -105,6 +110,7 @@ export default {
     },
     {
       name: 'Plancha dinámica',
+      coach: 'plank',
       area: 'Core y hombros',
       mus: ['core', 'delt', 'chest', 'obl'],
       mode: 'plank',
@@ -119,6 +125,7 @@ export default {
     },
     {
       name: 'Elevación de piernas',
+      coach: 'legRaise',
       area: 'Abdomen bajo',
       mus: ['core', 'quad'],
       mode: 'legRaise',

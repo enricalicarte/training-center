@@ -29,6 +29,7 @@ export default {
   exercises: [
     {
       name: 'Montaña y respiración',
+      coach: 'mountain',
       area: 'Postura y calma',
       mus: ['core', 'quad', 'glute'],
       mode: 'pose',
@@ -44,6 +45,7 @@ export default {
     },
     {
       name: 'Postura del árbol',
+      coach: 'tree',
       area: 'Equilibrio',
       mus: ['glute', 'quad', 'core'],
       mode: 'pose',
@@ -60,6 +62,7 @@ export default {
     },
     {
       name: 'Guerrero I y II',
+      coach: 'warrior',
       area: 'Piernas y hombros',
       mus: ['quad', 'glute', 'delt'],
       mode: 'pose',
@@ -76,6 +79,7 @@ export default {
     },
     {
       name: 'Perro, plancha y cobra',
+      coach: 'dogPlankCobra',
       area: 'Fuerza y espalda',
       mus: ['delt', 'core', 'back', 'tri'],
       mode: 'pose',
@@ -91,6 +95,7 @@ export default {
     },
     {
       name: 'Gato y vaca',
+      coach: 'catCow',
       area: 'Movilidad de columna',
       mus: ['back', 'core'],
       mode: 'pose',
@@ -106,6 +111,7 @@ export default {
     },
     {
       name: 'Pájaro-perro',
+      coach: 'birdDog',
       area: 'Core y equilibrio',
       mus: ['core', 'glute', 'back'],
       mode: 'pose',
@@ -122,6 +128,7 @@ export default {
     },
     {
       name: 'Pinza sentado y torsión',
+      coach: 'seatedFold',
       area: 'Isquios y columna',
       mus: ['ham', 'back'],
       mode: 'pose',
@@ -137,6 +144,7 @@ export default {
     },
     {
       name: 'Postura del niño y relajación',
+      coach: 'childRelax',
       area: 'Calma final',
       mus: ['back'],
       mode: 'pose',

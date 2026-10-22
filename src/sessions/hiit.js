@@ -50,6 +50,7 @@ export default {
     },
     {
       name: 'Rodillas altas',
+      coach: 'highKnees',
       area: 'Cardio y core',
       mus: ['quad', 'core', 'calf'],
       mode: 'highKnees',
@@ -64,6 +65,7 @@ export default {
     },
     {
       name: 'Sentadilla con salto',
+      coach: 'squat',
       area: 'Piernas explosivas',
       mus: ['quad', 'glute', 'calf'],
       mode: 'squat',
@@ -78,6 +80,7 @@ export default {
     },
     {
       name: 'Mountain climbers',
+      coach: 'mountainClimber',
       area: 'Core y cardio',
       mus: ['core', 'delt', 'quad'],
       mode: 'mountain',
@@ -92,6 +95,7 @@ export default {
     },
     {
       name: 'Patinador',
+      coach: 'skater',
       area: 'Piernas laterales',
       mus: ['glute', 'abd', 'quad', 'obl'],
       mode: 'skater',
@@ -106,6 +110,7 @@ export default {
     },
     {
       name: 'Burpees',
+      coach: 'burpee',
       area: 'Cuerpo completo',
       mus: ['chest', 'quad', 'core', 'delt'],
       mode: 'burpee',
@@ -120,6 +125,7 @@ export default {
     },
     {
       name: 'Talones al glúteo',
+      coach: 'buttKicks',
       area: 'Isquios y cardio',
       mus: ['ham', 'calf', 'glute'],
       mode: 'kicks',
@@ -134,6 +140,7 @@ export default {
     },
     {
       name: 'Comba imaginaria',
+      coach: 'jump',
       area: 'Coordinación y gemelos',
       mus: ['calf', 'delt', 'quad'],
       mode: 'jump',

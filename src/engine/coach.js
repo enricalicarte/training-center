@@ -1,6 +1,7 @@
 // Coach de cámara: abre la cámara, detecta tu cuerpo (MediaPipe Pose, ejecutado en el propio dispositivo)
 // y analiza la técnica con coach-logic.js. El vídeo no se envía ni se guarda en ningún sitio.
-import { ANALYZERS, CoachSession, SKELETON, LM } from './coach-logic.js';
+import { CoachSession, SKELETON, LM } from './coach-logic.js';
+import { ANALYZERS } from './coach-analyzers.js';
 
 const BASE = 'mp/';
 let libPromise = null;
@@ -71,7 +72,7 @@ export function createCoach({ stageEl, say, getExercise }) {
     if (!session) return;
     const iso = ANALYZERS[session.kind].isometric;
     $('.cr').textContent = iso ? session.an.seconds : session.reps.count;
-    $('.cl').textContent = iso ? 'seg. bien' : 'reps';
+    $('.cl').textContent = iso ? 'seg. bien' : ANALYZERS[session.kind].label || 'reps';
     $('.cs').textContent = !iso && session.reps.count ? Math.round((session.reps.good / session.reps.count) * 100) + '%' : '–';
   };
 
@@ -82,7 +83,7 @@ export function createCoach({ stageEl, say, getExercise }) {
     stats();
     if (mode === 'run') {
       if (session) msg(ANALYZERS[session.kind].hint);
-      else msg('Este ejercicio aún no tiene análisis por cámara. Prueba con sentadilla, zancadas, flexiones, plancha, puente o jumping jacks.', 'warn');
+      else msg('Este ejercicio no tiene análisis por cámara.', 'warn');
     }
   }
 
