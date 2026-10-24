@@ -28,6 +28,7 @@ export default {
     {
       name: 'Sentadilla',
       coach: 'squat',
+      mirror: true,
       area: 'Piernas y glúteos',
       mus: ['quad', 'glute', 'ham', 'core'],
       mode: 'squat',

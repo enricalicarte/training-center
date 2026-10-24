@@ -3,6 +3,7 @@ import { MUSCLE_NAMES } from './rig.js';
 import { clamp } from './math.js';
 import { stepAvatar } from './pose.js';
 import { createCoach } from './coach.js';
+import { createMirror, hasMirror } from './mirror.js';
 import { beep, chime, keepAwake, requestFullscreen, speak, stopSpeech, toggleFullscreen } from './audio.js';
 
 /**
@@ -337,6 +338,13 @@ export function bootSession(def) {
     getExercise: () => EXS[D.ex],
   });
 
+  const mirror = createMirror({
+    say: (t) => speak(CFG, t),
+    getExercise: () => EXS[D.ex],
+    getTarget: () => LV(D.ex).n,
+    onClose: () => $('#bCam').classList.toggle('on', coach.isOpen()),
+  });
+
   // ---------- flujo ----------
   function loadExercise() {
     const ex = EXS[D.ex];
@@ -349,6 +357,7 @@ export function bootSession(def) {
     renderPanel();
     renderTimer();
     if (coach) coach.setExercise(ex);
+    $('#bCam').textContent = ex.mirror ? 'Modo espejo' : 'Cámara';
   }
 
   function startSession() {
@@ -532,6 +541,17 @@ export function bootSession(def) {
   };
   $('#bF').onclick = toggleFullscreen;
   $('#bCam').onclick = () => {
+    const ex = EXS[D.ex];
+    if (ex.mirror && hasMirror(ex.coach)) {
+      if (coach.isOpen()) coach.toggle();
+      if (!D.paused && D.phase !== 'ready') {
+        D.paused = true;
+        renderPanel();
+      }
+      mirror.open();
+      $('#bCam').classList.add('on');
+      return;
+    }
     coach.toggle();
     $('#bCam').classList.toggle('on', coach.isOpen());
   };
@@ -636,6 +656,11 @@ export function bootSession(def) {
     const dt = Math.min(0.25, (now - last) / 1000 || 0);
     last = now;
     tick(dt);
+    if (mirror.isOpen()) {
+      // el modo espejo tapa la escena 3D: no la renderizamos para dejar la CPU/GPU al detector
+      requestAnimationFrame(loop);
+      return;
+    }
     const ex = EXS[D.ex];
     const inSession = D.screen === 'session';
     const animating = inSession && (D.phase === 'ready' || D.phase === 'work');
@@ -671,6 +696,7 @@ export function bootSession(def) {
 
   // gancho para pruebas / capturas
   window.__k = {
+    mirror,
     D,
     EXS,
     CFG,

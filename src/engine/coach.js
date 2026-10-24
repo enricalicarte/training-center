@@ -3,10 +3,10 @@
 import { CoachSession, SKELETON, LM } from './coach-logic.js';
 import { ANALYZERS } from './coach-analyzers.js';
 
-const BASE = 'mp/';
+export const BASE = 'mp/';
 let libPromise = null;
 
-function loadLib() {
+export function loadLib() {
   if (window.Pose) return Promise.resolve();
   if (!libPromise) {
     libPromise = new Promise((res, rej) => {
